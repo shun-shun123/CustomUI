@@ -1,0 +1,17 @@
+{
+    "name": "com.mummy.customui",
+    "version": "0.1.0",
+    "displayName": "CustomUI",
+    "description": "uGUIを拡張したUI基盤パッケージです。既存のuGUIを継承しつつ、より便利に、または高パフォーマンスで使える機能を実装しています。",
+    "unity": "2019.3",
+    "keywords": [
+        "ui",
+        "uGUI",
+        "high performance",
+        "light"
+    ],
+    "author": {
+        "name": "mummy",
+        "url": "https://github.com/shun-shun123"
+    }
+}
