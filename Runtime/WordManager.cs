@@ -16,6 +16,11 @@ namespace Mummy.CustomUI
         /// Path to CustomTextSettings from Resources folder
         /// </summary>
         private static readonly string CustomTextSettingsPath = "CustomTextSettings";
+
+        /// <summary>
+        /// WordDict data path in Resourced folder
+        /// </summary>
+        public const string WordDictDataPath = "WordDict";
         
         /// <summary>
         /// TextType to TextData
