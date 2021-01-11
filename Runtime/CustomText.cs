@@ -1,4 +1,5 @@
 ﻿using System;
+using Mummy.CustomUI.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,12 @@ namespace Mummy.CustomUI
         private TextType textType;
 
         /// <summary>
+        /// WordDict key
+        /// </summary>
+        [SerializeField]
+        private string key;
+
+        /// <summary>
         /// Awake
         /// </summary>
         protected override void Awake()
@@ -42,6 +49,7 @@ namespace Mummy.CustomUI
             {
                 SetupCustomTextInEditorMode();
             }
+            SetTextFromWordDict();
         }
 
         /// <summary>
@@ -65,6 +73,16 @@ namespace Mummy.CustomUI
             font = textTypeData.FontData;
             fontSize = textTypeData.TextSize;
             color = textTypeData.TextColor;
+        }
+
+        private void SetTextFromWordDict()
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                return;
+            }
+
+            text = WordManager.Instance.GetWord(key);
         }
         
         #if UNITY_EDITOR

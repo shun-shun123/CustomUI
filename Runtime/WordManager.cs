@@ -27,6 +27,12 @@ namespace Mummy.CustomUI
         /// </summary>
         private readonly Dictionary<CustomText.TextType, TextTypeData> _textTypeToData = new Dictionary<CustomText.TextType, TextTypeData>();
 
+        /// <summary>
+        /// WordDict
+        /// </summary>
+        [SerializeField]
+        private WordDict wordDict;
+
         protected override void OnInitialize()
         {
             LoadWordsData();
@@ -80,6 +86,16 @@ namespace Mummy.CustomUI
             {
                 Debug.LogError($"LoadWordsData throws exception: {ex}");
             }
+        }
+
+        /// <summary>
+        /// GetWord from wordDict
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string GetWord(string key)
+        {
+            return wordDict.GetWord(key);
         }
 
         /// <summary>
