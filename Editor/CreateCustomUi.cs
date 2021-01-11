@@ -11,6 +11,11 @@ namespace Mummy.CustomUI
     public class CreateCustomUi : Editor
     {
         /// <summary>
+        /// MenuItemName
+        /// </summary>
+        public const string MENU_ITEM_NAME = "GameObject/CustomUI";
+        
+        /// <summary>
         /// Create new ui part
         /// </summary>
         /// <typeparam name="T">type of customUi</typeparam>

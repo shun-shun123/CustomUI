@@ -14,10 +14,26 @@ namespace Mummy.CustomUI
         /// <summary>
         /// Create New CustomText
         /// </summary>
-        [MenuItem("GameObject/CustomUI/Custom Text", false, 10)]
+        [MenuItem(CreateCustomUi.MENU_ITEM_NAME + "/Custom Text", false, 10)]
         public static void CreateCustomText()
         {
             CreateCustomUi.CreateNewUi<CustomText>();
+        }
+
+        /// <summary>
+        /// Create WordManager
+        /// </summary>
+        [MenuItem(CreateCustomUi.MENU_ITEM_NAME + "/WordManager", false, 10)]
+        public static void CreateWordManager()
+        {
+            if (WordManager.Instance == null)
+            {
+                var wordManager = new GameObject("WordManager", typeof(WordManager));
+            }
+            else
+            {
+                Debug.LogError("WordManager is already created.");
+            }
         }
     }
 }
