@@ -80,5 +80,22 @@ namespace Mummy.CustomUI.Model
         {
             return _wordDictionary.Remove(key);
         }
+
+        public string GetWord(string key)
+        {
+            if (_wordDictionary.ContainsKey(key))
+            {
+                return _wordDictionary[key];
+            }
+
+            Debug.LogError($"key: {key} is not found in wordDict.");
+            return string.Empty;
+        }
+
+        public void UpdateWordPair(string beforeKey, string afterKey, string afterValue)
+        {
+            _wordDictionary.Remove(beforeKey);
+            _wordDictionary[afterKey] = afterValue;
+        }
     }
 }

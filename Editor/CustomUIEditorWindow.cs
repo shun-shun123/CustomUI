@@ -58,12 +58,22 @@ namespace Mummy.CustomUI
         private void DrawSavedWordDictData()
         {
             List<string> removeKeys = new List<string>();
+            List<ModifiedWordPair> modifiedWordPairs = new List<ModifiedWordPair>();
+            
             foreach (var pair in _wordDict.WordDictionary)
             {
                 EditorGUILayout.BeginHorizontal();
                 {
-                    GUILayout.TextField(pair.Key);
-                    GUILayout.TextField(pair.Value);
+                    var key = GUILayout.TextField(pair.Key);
+                    var value = GUILayout.TextField(pair.Value);
+
+                    // modified word pair data
+                    if (key != pair.Key || value != pair.Value)
+                    {
+                        modifiedWordPairs.Add(new ModifiedWordPair(pair.Key, pair.Value, key, value));
+                    }
+                    
+                    // pressed delete button
                     if (GUILayout.Button("X"))
                     {
                         removeKeys.Add(pair.Key);
@@ -72,9 +82,16 @@ namespace Mummy.CustomUI
                 EditorGUILayout.EndHorizontal();
             }
 
+            // update removed word pair
             foreach (var removeKey in removeKeys)
             {
                 _wordDict.RemoveWordPair(removeKey);
+            }
+            
+            // update modified word pair
+            foreach (var mod in modifiedWordPairs)
+            {
+                _wordDict.UpdateWordPair(mod.BeforeKey, mod.AfterKey, mod.AfterValue);
             }
         }
 
@@ -105,6 +122,24 @@ namespace Mummy.CustomUI
                 }
 
             }
+        }
+
+        /// <summary>
+        /// WordDict modified info
+        /// </summary>
+        private class ModifiedWordPair
+        {
+            public ModifiedWordPair(string beforeKey, string beforeValue, string afterKey, string afterValue)
+            {
+                BeforeKey = beforeKey;
+                BeforeValue = beforeValue;
+                AfterKey = afterKey;
+                AfterValue = afterValue;
+            }
+            public string BeforeKey;
+            public string BeforeValue;
+            public string AfterKey;
+            public string AfterValue;
         }
     }
 }
