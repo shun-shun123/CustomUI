@@ -5,6 +5,9 @@ using Assert = UnityEngine.Assertions.Assert;
 
 namespace Mummy.CustomUI.Test
 {
+    /// <summary>
+    /// WordDictTest
+    /// </summary>
     public class WordDictTest
     {
         /// <summary>

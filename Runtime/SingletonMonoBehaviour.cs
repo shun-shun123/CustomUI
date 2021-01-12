@@ -67,7 +67,7 @@ namespace Mummy.CustomUI
         protected virtual void OnInitialize() { }
 
         /// <summary>
-        /// Instanceの存在をチェックする
+        /// Check exist instance
         /// </summary>
         private void CheckInstance()
         {

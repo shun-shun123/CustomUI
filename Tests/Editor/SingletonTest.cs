@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Mummy.CustomUI.Test
 {
+    /// <summary>
+    /// SingletonTest
+    /// </summary>
     public class SingletonTest
     {
         /// <summary>
@@ -15,10 +18,19 @@ namespace Mummy.CustomUI.Test
             Assert.IsTrue(TestSingleton.Instance.Count == 100, "TestSingleton.Instance.Count == 100 failed");
         }
 
+        /// <summary>
+        /// Singleton class for test
+        /// </summary>
         public class TestSingleton : SingletonMonoBehaviour<TestSingleton>
         {
+            /// <summary>
+            /// Count
+            /// </summary>
             public int Count { get; private set; }
-            
+
+            /// <summary>
+            /// OnInitialize
+            /// </summary>
             protected override void OnInitialize()
             {
                 for (var i = 0; i < 100; i++)

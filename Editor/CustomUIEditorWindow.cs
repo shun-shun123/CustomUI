@@ -11,12 +11,24 @@ namespace Mummy.CustomUI
     /// </summary>
     public class CustomUIEditorWindow : EditorWindow
     {
+        /// <summary>
+        /// CustomUIEditorWindow
+        /// </summary>
         private static CustomUIEditorWindow _window;
 
+        /// <summary>
+        /// WordDict
+        /// </summary>
         private WordDict _wordDict;
 
+        /// <summary>
+        /// newKey
+        /// </summary>
         private string _newKey;
 
+        /// <summary>
+        /// newWord
+        /// </summary>
         private string _newWord;
         
         /// <summary>
@@ -29,11 +41,17 @@ namespace Mummy.CustomUI
             _window.Show();
         }
 
+        /// <summary>
+        /// OnGUI
+        /// </summary>
         private void OnGUI()
         {
             DrawCustomTextSettings();
         }
 
+        /// <summary>
+        /// DrawCustomTextSettings
+        /// </summary>
         private void DrawCustomTextSettings()
         {
             EditorGUILayout.BeginVertical();
@@ -50,11 +68,17 @@ namespace Mummy.CustomUI
             EditorGUILayout.EndVertical();
         }
 
+        /// <summary>
+        /// ReadWordDictData from objectField
+        /// </summary>
         private void ReadWordDictData()
         {
             _wordDict = EditorGUILayout.ObjectField(_wordDict, typeof(WordDict), false) as WordDict;
         }
 
+        /// <summary>
+        /// Draw saved wordDict data
+        /// </summary>
         private void DrawSavedWordDictData()
         {
             List<string> removeKeys = new List<string>();
@@ -70,7 +94,7 @@ namespace Mummy.CustomUI
                     // modified word pair data
                     if (key != pair.Key || value != pair.Value)
                     {
-                        modifiedWordPairs.Add(new ModifiedWordPair(pair.Key, pair.Value, key, value));
+                        modifiedWordPairs.Add(new ModifiedWordPair(pair.Key, key, value));
                     }
                     
                     // pressed delete button
@@ -95,6 +119,9 @@ namespace Mummy.CustomUI
             }
         }
 
+        /// <summary>
+        /// Draw new word pair
+        /// </summary>
         private void DrawNewWordPair()
         {
             EditorGUILayout.BeginHorizontal();
@@ -105,6 +132,9 @@ namespace Mummy.CustomUI
             EditorGUILayout.EndHorizontal();
         }
 
+        /// <summary>
+        /// save new word pair data
+        /// </summary>
         private void SaveNewWordPair()
         {
             if (GUILayout.Button("Append new pair"))
@@ -129,16 +159,32 @@ namespace Mummy.CustomUI
         /// </summary>
         private class ModifiedWordPair
         {
-            public ModifiedWordPair(string beforeKey, string beforeValue, string afterKey, string afterValue)
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="beforeKey">beforeKey</param>
+            /// <param name="afterKey">afterKey</param>
+            /// <param name="afterValue">afterValue</param>
+            public ModifiedWordPair(string beforeKey, string afterKey, string afterValue)
             {
                 BeforeKey = beforeKey;
-                BeforeValue = beforeValue;
                 AfterKey = afterKey;
                 AfterValue = afterValue;
             }
+            
+            /// <summary>
+            /// BeforeKey
+            /// </summary>
             public string BeforeKey;
-            public string BeforeValue;
+            
+            /// <summary>
+            /// AfterKey
+            /// </summary>
             public string AfterKey;
+            
+            /// <summary>
+            /// AfterValue
+            /// </summary>
             public string AfterValue;
         }
     }

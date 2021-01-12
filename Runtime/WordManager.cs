@@ -91,7 +91,7 @@ namespace Mummy.CustomUI
         /// <summary>
         /// GetWord from wordDict
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key</param>
         /// <returns></returns>
         public string GetWord(string key)
         {

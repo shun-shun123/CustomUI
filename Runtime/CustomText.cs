@@ -1,6 +1,4 @@
-﻿using System;
-using Mummy.CustomUI.Model;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Mummy.CustomUI
@@ -24,13 +22,13 @@ namespace Mummy.CustomUI
         }
 
         /// <summary>
-        /// 文字のタイプ
+        /// type of text
         /// </summary>
         [SerializeField]
         private TextType textType;
 
         /// <summary>
-        /// WordDict key
+        /// WordDict key needed if reference word dict
         /// </summary>
         [SerializeField]
         private string key;
@@ -75,6 +73,9 @@ namespace Mummy.CustomUI
             color = textTypeData.TextColor;
         }
 
+        /// <summary>
+        /// Set text from wordDict if key is specified
+        /// </summary>
         private void SetTextFromWordDict()
         {
             if (string.IsNullOrEmpty(key))
@@ -86,6 +87,9 @@ namespace Mummy.CustomUI
         }
         
         #if UNITY_EDITOR
+        /// <summary>
+        /// Setup text in editorMode
+        /// </summary>
         private void SetupCustomTextInEditorMode()
         {
             WordManager.Instance.LoadWordsData();

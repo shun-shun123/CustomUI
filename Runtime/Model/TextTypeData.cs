@@ -8,10 +8,19 @@ namespace Mummy.CustomUI.Model
     /// </summary>
     public class TextTypeData
     {
+        /// <summary>
+        /// FontData
+        /// </summary>
         public readonly Font FontData;
 
+        /// <summary>
+        /// TextSize
+        /// </summary>
         public readonly int TextSize;
 
+        /// <summary>
+        /// TextColor
+        /// </summary>
         public readonly Color TextColor;
 
         /// <summary>
