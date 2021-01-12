@@ -65,6 +65,12 @@ namespace Mummy.CustomUI.Model
             }
         }
 
+        /// <summary>
+        /// Append new word pair
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <param name="word">word</param>
+        /// <returns>isSuccess</returns>
         public bool AppendNewWord(string key, string word)
         {
             if (_wordDictionary.ContainsKey(key))
@@ -76,11 +82,21 @@ namespace Mummy.CustomUI.Model
             return true;
         }
 
+        /// <summary>
+        /// Remove word pair
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <returns>isSuccess</returns>
         public bool RemoveWordPair(string key)
         {
             return _wordDictionary.Remove(key);
         }
 
+        /// <summary>
+        /// GetWord
+        /// </summary>
+        /// <param name="key">key</param>
+        /// <returns>registered word</returns>
         public string GetWord(string key)
         {
             if (_wordDictionary.ContainsKey(key))
@@ -88,10 +104,16 @@ namespace Mummy.CustomUI.Model
                 return _wordDictionary[key];
             }
 
-            Debug.LogError($"key: {key} is not found in wordDict.");
+            Debug.LogWarning($"key: {key} is not found in wordDict.");
             return string.Empty;
         }
 
+        /// <summary>
+        /// Update exist word pair
+        /// </summary>
+        /// <param name="beforeKey">before key</param>
+        /// <param name="afterKey">after key</param>
+        /// <param name="afterValue">after value</param>
         public void UpdateWordPair(string beforeKey, string afterKey, string afterValue)
         {
             _wordDictionary.Remove(beforeKey);
