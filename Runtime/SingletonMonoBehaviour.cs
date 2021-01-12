@@ -11,13 +11,12 @@ namespace Mummy.CustomUI
         /// <summary>
         /// SingletonInstance
         /// </summary>
-        private static T instance;
+        private static T _instance;
 
         /// <summary>
         /// Initialized flag
         /// </summary>
         private bool _hasInitialized;
-
 
         /// <summary>
         /// public SingletonInstance
@@ -26,10 +25,10 @@ namespace Mummy.CustomUI
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = FindObjectOfType<T>();
-                    if (instance == null)
+                    _instance = FindObjectOfType<T>();
+                    if (_instance == null)
                     {
                         if (Application.isPlaying)
                         {
@@ -42,14 +41,14 @@ namespace Mummy.CustomUI
                     }
                 }
 
-                var singleton = instance as SingletonMonoBehaviour<T>;
+                var singleton = _instance as SingletonMonoBehaviour<T>;
                 if (singleton != null && singleton._hasInitialized == false)
                 {
                     singleton.OnInitialize();
                     singleton._hasInitialized = true;
                 }
                 
-                return instance;
+                return _instance;
             }
         }
 
@@ -65,17 +64,14 @@ namespace Mummy.CustomUI
         /// <summary>
         /// Called when initialize
         /// </summary>
-        protected virtual void OnInitialize()
-        {
-            
-        }
+        protected virtual void OnInitialize() { }
 
         /// <summary>
         /// Instanceの存在をチェックする
         /// </summary>
         private void CheckInstance()
         {
-            if (this != instance)
+            if (this != _instance)
             {
                 Destroy(this);
                 Debug.LogError($"{typeof(T)} is already attached with {Instance.gameObject.name}, so destroy component attached with {name}.");
