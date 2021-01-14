@@ -1,4 +1,5 @@
-﻿using Mummy.CustomUI.Module;
+﻿using System;
+using Mummy.CustomUI.Module;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,21 @@ namespace Mummy.CustomUI
     [AddComponentMenu("CustomUI/CustomButton", 20)]
     public class CustomButton : Button
     {
+        /// <summary>
+        /// SeType enum
+        /// </summary>
+        private enum SeType
+        {
+            Ok,
+            Cancel,
+        }
+
+        /// <summary>
+        /// SeType
+        /// </summary>
+        [SerializeField]
+        private SeType seType;
+        
         /// <summary>
         /// longPressHandler
         /// </summary>
@@ -53,6 +69,17 @@ namespace Mummy.CustomUI
             }
 
             _isPressingButton = false;
+            longPressHandler.Initialize();
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            base.OnPointerClick(eventData);
+            if (eventData.button != PointerEventData.InputButton.Left)
+            {
+                return;
+            }
+            OnClick();
         }
 
         private void Update()
@@ -60,6 +87,26 @@ namespace Mummy.CustomUI
             if (_isPressingButton)
             {
                 longPressHandler.CountDownLongPress();   
+            }
+        }
+
+        private void OnClick()
+        {
+            PlaySe();
+        }
+
+        private void PlaySe()
+        {
+            switch (seType)
+            {
+                case SeType.Ok:
+                    Debug.Log("PlayOK");
+                    break;
+                case SeType.Cancel:
+                    Debug.Log("PlayCancel");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
