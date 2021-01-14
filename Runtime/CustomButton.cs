@@ -13,6 +13,16 @@ namespace Mummy.CustomUI
     public class CustomButton : Button
     {
         /// <summary>
+        /// Play ok se
+        /// </summary>
+        public static Action PlayOkSe;
+
+        /// <summary>
+        /// Play cancel se
+        /// </summary>
+        public static Action PlayCancelSe;
+        
+        /// <summary>
         /// SeType enum
         /// </summary>
         private enum SeType
@@ -46,7 +56,7 @@ namespace Mummy.CustomUI
             get => longPressHandler.OnLongPressedHandler;
             set => longPressHandler.OnLongPressedHandler = value;
         }
-
+        
         public override void OnPointerDown(PointerEventData eventData)
         {
             base.OnPointerDown(eventData);
@@ -100,10 +110,10 @@ namespace Mummy.CustomUI
             switch (seType)
             {
                 case SeType.Ok:
-                    Debug.Log("PlayOK");
+                    PlayOkSe?.Invoke();
                     break;
                 case SeType.Cancel:
-                    Debug.Log("PlayCancel");
+                    PlayCancelSe?.Invoke();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
