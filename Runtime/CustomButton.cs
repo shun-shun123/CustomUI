@@ -15,12 +15,12 @@ namespace Mummy.CustomUI
         /// <summary>
         /// Play ok se
         /// </summary>
-        public static Action PlayOkSe;
+        public static Action PlayOkSe { private get; set; }
 
         /// <summary>
         /// Play cancel se
         /// </summary>
-        public static Action PlayCancelSe;
+        public static Action PlayCancelSe { private get; set; }
         
         /// <summary>
         /// SeType enum
@@ -53,7 +53,6 @@ namespace Mummy.CustomUI
         /// </summary>
         public LongPressHandler.OnLongPressed OnLongPressed
         {
-            get => longPressHandler.OnLongPressedHandler;
             set => longPressHandler.OnLongPressedHandler = value;
         }
         
