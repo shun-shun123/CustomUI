@@ -1,3 +1,15 @@
-﻿{
-	"name": "Mummy.CustomUI.Editor"
+{
+    "name": "Mummy.CustomUI.Editor",
+    "references": [
+        "GUID:1a9932ad354734514b6c8dcb7ce5b9a0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
